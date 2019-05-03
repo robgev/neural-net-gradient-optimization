@@ -1,17 +1,6 @@
-syms x1 x2;
-f = -2 * exp(-((x1 - 1)^2 + x2^2) / .2) + -3 * exp(-((x1 + 1)^2 + x2^2) / .2) + x1^2 + x2^2;
-alpha = 1e-2;
-b1 = 0.9;
-b2 = 0.999;
-e = 1e-8;
-params = [x1, x2];
-testVals1 = [0.3, -1.8];
-
-weights = adam_gr(f, params, testVals1, alpha, b1, b2, e);
-disp('Calculated Weights are:'); 
-disp(weights);
-
-function result = adam_gr(f, params, weights, alpha, b1, b2, e)
+function result = adam(f, params, weights, alpha, b1, b2, e)
+    disp('Initial values are:');
+    disp(weights);
     n = 0;
     result = weights;
     grads = gradient(f, params);
@@ -34,7 +23,7 @@ function result = adam_gr(f, params, weights, alpha, b1, b2, e)
             result = result - (alpha * step);
     end
     disp(['Number of steps: ', num2str(n)]); 
+    disp('Calculated Weights are:'); 
+    disp(result);
+    disp('');
 end
-
-
-

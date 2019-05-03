@@ -1,18 +1,4 @@
-syms x1 x2;
-f = -2 * exp(-((x1 - 1)^2 + x2^2) / .2) + -3 * exp(-((x1 + 1)^2 + x2^2) / .2) + x1^2 + x2^2;
-alpha = 1e-2;
-b = 0.9;
-e = 1e-8;
-params = [x1, x2];
-testVals1 = [0.3, -1.8];
-testVals2 = [0.79, -1.7];
-testVals3 = [-1, -1.6];
-
-%RMSProp_grad(f, params, testVals1, alpha, b, e);
-%RMSProp_grad(f, params, testVals2, alpha, b, e);
-RMSProp_grad(f, params, testVals3, alpha, b, e);
-
-function result = RMSProp_grad(f, params, weights, alpha, b, e)
+function result = RMSProp(f, params, weights, alpha, b, e)
     disp('Initial values are:');
     disp(weights);
     n = 0;
@@ -36,6 +22,3 @@ function result = RMSProp_grad(f, params, weights, alpha, b, e)
     disp(result);
     disp('');
 end
-
-
-
